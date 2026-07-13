@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Javascript Objects</title>
+  </head>
+  <body>
+    <h1>Books</h1>
+
+    <ul id="object"></ul>
+
+    <script>
+      function Book(title, author, publishedYear, price, discount = 0) {
+        return {
+          title,
+          author,
+          publishedYear,
+          price,
+          discount,
+
+          discountPrice() {
+            return this.price * (1 - this.discount / 100);
+          },
+
+          displayInfo(){
+            if(discount === 0) {
+                return `
+                <strong>${this.title}</strong><br>
+                Author: ${this.author}<br>
+                Published Year: ${this.publishedYear}<br>
+                Price: Rs. ${this.price}<br>
+                `
+            }
+
+            return `
+                <strong>${this.title}</strong><br>
+                Author: ${this.author}<br>
+                Published Year: ${this.publishedYear}<br>
+                Price: <del>Rs. ${this.price}</del> <ins>Rs. ${this.discountPrice()}</ins> (${this.discount}% off!)<br>
+                `
+          }
+        };
+      }
+
+      const books = [
+        Book("1984", "George Orwell", 1984, 300),
+        Book("And The Mountain Echoed", "Khaled Hosseini", 2004, 700, 20),
+        Book("Crime & Punishment", "Fyodor Dostoyevsky", 1898, 1700, 15),
+      ];
+
+      books.forEach((book) => {
+        document.getElementById("object").innerHTML += `
+            <li>
+                ${book.displayInfo()}
+            </li>
+          `;
+      });
+      
+    </script>
+  </body>
+</html>
