@@ -1,13 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <title>Library System</title>
-        <script src="./library.js" defer></script>
-    </head>
-    <body>
-        <h1>Library System</h1>
-        <h2>Books</h2>
-        <ul id="default-books"></ul>
-        
-    </body>
+  <head>
+    <title>Library System</title>
+
+    <!-- <link rel="stylesheet" href="./library.css" /> -->
+    <script src="./library.js" defer></script>
+  </head>
+  <body>
+    <!-- <header>
+      <h1 id="title-header">Library System</h1>
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li>Home</li>
+          <li>Inventory</li>
+          <li>Book Transaction</li>
+          <li>Admin</li>
+          <li>Reports</li>
+        </ul>
+      </nav>
+    </header> -->
+
+    <h2>Books</h2>
+    <ul id="default-books"></ul>
+    <ul id="available-books"></ul>
+    <ul id="unavailable-books"></ul>
+    <button type="button" id="available" onclick="availableBooks(true)">List Available</button>
+    <button type="button" id="unavailable" onclick="availableBooks(false)">List Unavailable</button>
+  </body>
 </html>
