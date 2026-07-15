@@ -159,6 +159,7 @@ function displayBooks(books, bookList) {
     // Available: ` + (available? "Yes": "Out of stock!");
     bookList.appendChild(li);
   });
+  return false;
 }
 
 function availableBooks(value) {
@@ -169,14 +170,20 @@ function availableBooks(value) {
     const availability = books.filter((book) => book.available === false);
     displayBooks(availability, bookList);
   }
+  return false;
 }
 
 function searchBooks(searchBy) {
   const searchText = document.getElementById(searchBy).value.toLowerCase();
   console.log(searchBy);
   const filteredBooks = books.filter((book) =>
-    book[searchBy].toLowerCase().includes(searchText)
+    book[searchBy].toLowerCase().includes(searchText),
   );
   displayBooks(filteredBooks, bookList);
   return false;
+}
+
+function totalValueOfBooks() {
+  const sum = books.reduce((total, book) => total + book.price, 0);
+  document.getElementById("totalValue").innerHTML = `<b>Total Value of Books: $${sum.toFixed(2)}</b>`;
 }
