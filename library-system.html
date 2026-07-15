@@ -21,10 +21,27 @@
     </header> -->
 
     <h2>Books</h2>
-    <ul id="default-books"></ul>
-    <ul id="available-books"></ul>
-    <ul id="unavailable-books"></ul>
-    <button type="button" id="available" onclick="availableBooks(true)">List Available</button>
-    <button type="button" id="unavailable" onclick="availableBooks(false)">List Unavailable</button>
+
+    <div class="search">
+      <div class="author">
+        <label for="name">Search book by author: </label><br />
+        <input type="text" id="author" />
+        <button type="button" onclick="searchBooks('author')">Search</button>
+      </div>
+      <div class="title">
+        <label for="name">Search book by title: </label><br />
+        <input type="text" id="title" />
+        <button type="button" onclick="searchBooks('title')">Search</button>
+      </div>
+    </div>
+
+    <button type="button" id="available" onclick="availableBooks(true)">
+      List Available
+    </button>
+    <button type="button" id="unavailable" onclick="availableBooks(false)">
+      List Unavailable
+    </button>
+
+    <ul id="list-books"></ul>
   </body>
 </html>
