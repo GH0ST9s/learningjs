@@ -143,12 +143,9 @@ const books = [
 
 // HTML Elements
 const bookList = document.getElementById("list-books");
-// const bookListAvailable = document.getElementById("available-books");
-// const bookListUnavailable = document.getElementById("unavailable-books");
 
 // Function calls
 // displayBooks(books, bookList);
-// displayAvailableBooks(books, bookList);
 
 // Functions
 function displayBooks(books, bookList) {
@@ -164,36 +161,13 @@ function displayBooks(books, bookList) {
   });
 }
 
-function displayAvailableBooks(books, bookList) {
-  // books.forEach(({title, author, year, price, available}) => {
-  //     const li = document.createElement("li");
-  //     li.innerHTML = `<strong>${title}</strong><br>
-  //                         Author: ${author}<br>
-  //                         Published Year: ${year}<br>
-  //                         Price: $${price}<br>`;
-  //     bookList.appendChild(li);
-  // })
-  const availableBooks = books.filter((book) => book.available === true);
-  displayBooks(availableBooks, bookList);
-}
-
-// function availableBooks(value) {
-//   if (value) {
-//     const available = books.filter((book) => book.available === true);
-//     displayBooks(available, bookListAvailable);
-//   } else {
-//     const available = books.filter((book) => book.available === false);
-//     displayBooks(available, bookListUnavailable);
-//   }
-// }
-
 function availableBooks(value) {
   if (value) {
-    const available = books.filter((book) => book.available === true);
-    displayBooks(available, bookList);
+    const availability = books.filter((book) => book.available === true);
+    displayBooks(availability, bookList);
   } else {
-    const available = books.filter((book) => book.available === false);
-    displayBooks(available, bookList);
+    const availability = books.filter((book) => book.available === false);
+    displayBooks(availability, bookList);
   }
 }
 
