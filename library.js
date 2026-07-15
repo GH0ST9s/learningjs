@@ -162,6 +162,14 @@ function displayBooks(books, bookList) {
   return false;
 }
 
+function display(book, id) {
+  const { title, author, year, price } = book;
+  document.getElementById(id).innerHTML = `<strong>${title}</strong><br>
+                            Author: ${author}<br>
+                            Published Year: ${year}<br>
+                            Price: $${price}<br>`;
+}
+
 function availableBooks(value) {
   if (value) {
     const availability = books.filter((book) => book.available === true);
@@ -185,5 +193,14 @@ function searchBooks(searchBy) {
 
 function totalValueOfBooks() {
   const sum = books.reduce((total, book) => total + book.price, 0);
-  document.getElementById("totalValue").innerHTML = `<b>Total Value of Books: $${sum.toFixed(2)}</b>`;
+  document.getElementById("totalValue").innerHTML =
+    `<b>Total Value of Books: $${sum.toFixed(2)}</b>`;
+}
+
+function expensiveBook() {
+  const expensive = books.reduce((max, book) => (book.price > max.price ? book : max)
+    // console.log(max);
+  );
+
+  display(expensive, "list-books");
 }
