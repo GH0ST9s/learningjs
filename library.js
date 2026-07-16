@@ -172,10 +172,10 @@ function display(book, id) {
 
 function availableBooks(value) {
   if (value) {
-    const availability = books.filter((book) => book.available === true);
+    const availability = books.filter((book) => book.available);
     displayBooks(availability, bookList);
   } else {
-    const availability = books.filter((book) => book.available === false);
+    const availability = books.filter((book) => (!book.available));
     displayBooks(availability, bookList);
   }
   return false;
@@ -201,7 +201,6 @@ function expensiveBook() {
   const expensive = books.reduce((max, book) => (book.price > max.price ? book : max)
     // console.log(max);
   );
-
   display(expensive, bookList);
 }
 
