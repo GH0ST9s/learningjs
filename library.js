@@ -164,7 +164,7 @@ function displayBooks(books, bookList) {
 
 function display(book, id) {
   const { title, author, year, price } = book;
-  document.getElementById(id).innerHTML = `<strong>${title}</strong><br>
+  id.innerHTML = `<strong>${title}</strong><br>
                             Author: ${author}<br>
                             Published Year: ${year}<br>
                             Price: $${price}<br>`;
@@ -202,5 +202,10 @@ function expensiveBook() {
     // console.log(max);
   );
 
-  display(expensive, "list-books");
+  display(expensive, bookList);
+}
+
+function countAvailableBooks(){
+  const availableBooks = books.filter(({available}) => available == true);
+  displayBooks(availableBooks, bookList);
 }
