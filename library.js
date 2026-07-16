@@ -144,9 +144,6 @@ const books = [
 // HTML Elements
 const bookList = document.getElementById("list-books");
 
-// Function calls
-// displayBooks(books, bookList);
-
 // Functions
 function displayBooks(books, bookList) {
   bookList.innerHTML = "";
@@ -159,7 +156,6 @@ function displayBooks(books, bookList) {
     // Available: ` + (available? "Yes": "Out of stock!");
     bookList.appendChild(li);
   });
-  return false;
 }
 
 function display(book, id) {
@@ -184,7 +180,6 @@ function searchBooks(searchBy) {
     book[searchBy].toLowerCase().includes(searchText),
   );
   displayBooks(filteredBooks, bookList);
-  return false;
 }
 
 function totalValueOfBooks() {
