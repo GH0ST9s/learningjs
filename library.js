@@ -170,15 +170,11 @@ function display(book, id) {
                             Price: $${price.toFixed(2)}<br>`;
 }
 
-function availableBooks(value) {
-  if (value) {
-    const availability = books.filter((book) => book.available);
-    displayBooks(availability, bookList);
-  } else {
-    const availability = books.filter((book) => !book.available);
-    displayBooks(availability, bookList);
-  }
-  return false;
+function availableBooks(showAvailable) {
+  displayBooks(
+    books.filter(book => book.available === showAvailable),
+    bookList
+  );
 }
 
 function searchBooks(searchBy) {
