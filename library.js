@@ -209,3 +209,24 @@ function countAvailableBooks(){
   const availableBooks = books.filter(({available}) => available == true);
   displayBooks(availableBooks, bookList);
 }
+
+function sortByPrice(){
+  const sorted = books;
+  let len = sorted.length;
+  let swapped;
+
+  for(let i = 0; i < len; i++){
+    swapped = false;
+    for(let j = 0; j < len - i - 1; j++){
+      if(sorted[j].price > sorted[j+1].price){
+        [sorted[j], sorted[j+1]] = [sorted[j+1], sorted[j]];
+        swapped = true;
+      }
+    }
+
+    if(!swapped){
+      break;
+    }
+  }
+  displayBooks(sorted, bookList);
+}
