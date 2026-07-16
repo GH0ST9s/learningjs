@@ -167,7 +167,7 @@ function display(book, id) {
   id.innerHTML = `<strong>${title}</strong><br>
                             Author: ${author}<br>
                             Published Year: ${year}<br>
-                            Price: $${price}<br>`;
+                            Price: $${price.toFixed(2)}<br>`;
 }
 
 function availableBooks(value) {
@@ -175,7 +175,7 @@ function availableBooks(value) {
     const availability = books.filter((book) => book.available);
     displayBooks(availability, bookList);
   } else {
-    const availability = books.filter((book) => (!book.available));
+    const availability = books.filter((book) => !book.available);
     displayBooks(availability, bookList);
   }
   return false;
@@ -198,18 +198,19 @@ function totalValueOfBooks() {
 }
 
 function expensiveBook() {
-  const expensive = books.reduce((max, book) => (book.price > max.price ? book : max)
-    // console.log(max);
+  const expensive = books.reduce((max, book) =>
+    book.price > max.price ? book : max,
   );
   display(expensive, bookList);
 }
 
-function countAvailableBooks(){
-  const availableBooks = books.filter(({available}) => available == true);
-  displayBooks(availableBooks, bookList);
+function countAvailableBooks() {
+  const count = books.filter((book) => book.available).length;
+  document.getElementById("availableBooks").innerHTML =
+    `<b>Total Available Books: ` + count;
 }
 
-function sortByPrice(){
-  const sorted = [...books].sort((a,b) => a.price - b.price);
+function sortByPrice() {
+  const sorted = [...books].sort((a, b) => a.price - b.price);
   displayBooks(sorted, bookList);
 }
